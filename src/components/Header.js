@@ -4,12 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-import {
-  selectUserName,
-  selectUserPhoto,
-  setUserLoginDetails,
-  setSignOutState,
-} from "../features/user/userSlice";
+import { selectUserName, selectUserPhoto, setUserLoginDetails, setSignOutState } from "../redux/user/userSlice";
 import { auth, provider } from "../firebase";
 
 const Header = () => {
@@ -32,7 +27,6 @@ const Header = () => {
     auth.onAuthStateChanged(async (user) => {
       if (user) {
         setUser(user);
-        navigate("/home");
       }
     });
   }, [userName]);
@@ -43,6 +37,7 @@ const Header = () => {
         .signInWithPopup(provider)
         .then((res) => {
           setUser(res.user);
+          navigate("/home");
         })
         .catch((err) => {
           alert(err.message);
@@ -87,7 +82,7 @@ const Header = () => {
               <img src="/images/original-icon.svg" alt="HOME" />
               <span>ORIGINALS</span>
             </a>
-            <a>
+            <a href="/movies">
               <img src="/images/movie-icon.svg" alt="HOME" />
               <span>MOVIES</span>
             </a>

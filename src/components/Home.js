@@ -1,10 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import styled from "styled-components";
+
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setMovies } from "../features/movies/moviesSlice";
-import { selectUserName } from "../features/user/userSlice";
+import { setMovies } from "../redux/homeMovies/moviesSlice";
+import { selectUserName } from "../redux/user/userSlice";
+
 import db from "../firebase";
 
 import ImageSlider from "./ImageSlider";

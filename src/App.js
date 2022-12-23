@@ -4,6 +4,7 @@ import Login from "./components/Login";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Detail from "./components/Detail";
+import Movies from "./components/Movies/index.tsx";
 
 import "./App.css";
 
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Login />} />
           <Route exact path="/home" element={<Home />} />
+          <Route exact path="/movies" element={<Movies />} />
           <Route path="/detail/:id" element={<Detail />} />
         </Routes>
       </Router>
