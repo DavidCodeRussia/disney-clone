@@ -40,41 +40,56 @@ const Movies = () => {
       image:
         "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
     },
-    // {
-    //   title: "The Shawshank Redemption",
-    //   image:
-    //     "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
-    // },
-    // {
-    //   title: "The Shawshank Redemption",
-    //   image:
-    //     "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
-    // },
-    // {
-    //   title: "The Shawshank Redemption",
-    //   image:
-    //     "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
-    // },
-    // {
-    //   title: "The Shawshank Redemption",
-    //   image:
-    //     "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
-    // },
+    {
+      title: "The Shawshank Redemption",
+      image:
+        "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+    },
+    {
+      title: "The Shawshank Redemption",
+      image:
+        "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+    },
+    {
+      title: "The Shawshank Redemption",
+      image:
+        "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+    },
+    {
+      title: "The Shawshank Redemption",
+      image:
+        "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+    },
   ];
+
+  const [activeLink, setActiveLink] = useState();
 
   return (
     <WrapperPage>
       <MoviesPage>
         <MoviesInner>
           <MoviesTitle>Movies</MoviesTitle>
-          <MoviesGenre>{genreMovies && genreMovies.map((item, key) => <li key={key}>{item}</li>)}</MoviesGenre>
+          <MoviesGenre>
+            {genreMovies &&
+              genreMovies.map((item, key) => (
+                <li
+                  key={key}
+                  onClick={() => {
+                    setActiveLink(key);
+                  }}
+                  className={activeLink === key ? "activeLink" : ""}
+                >
+                  {item}
+                </li>
+              ))}
+          </MoviesGenre>
 
           {moviesAll ? (
             <MoviesCollection>
               {moviesAll.map((item, key) => (
                 <MoviePreview key={key}>
                   <img src={item.image} alt="of film" />
-                  {/* <div>{item.title}</div> */}
+                  <div>{item.title}</div>
                 </MoviePreview>
               ))}
             </MoviesCollection>
@@ -103,26 +118,35 @@ const MoviesTitle = styled.h1`
   margin-bottom: 25px;
 `;
 
-const MoviesGenre = styled.ul`
+const MoviesGenre = styled.div`
   display: flex;
+  flex-wrap: wrap;
   list-style: none;
 
   li {
-    padding: 0 10px 0 0;
+    margin: 0 10px 0 0;
+    cursor: pointer;
+  }
+
+  .activeLink {
+    color: #000;
   }
 `;
 
 const MoviesCollection = styled.div`
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
 `;
 
-const MoviePreview = styled.div`
-  overflow: hidden;
+const MoviePreview = styled.a`
   margin: 15px 15px 5px 0;
-  width: 18%;
+  width: 23%;
+  min-width: 150px;
+  list-style: none;
+
   img {
-    // width: 18%;
+    width: 100%;
     height: auto;
   }
 `;

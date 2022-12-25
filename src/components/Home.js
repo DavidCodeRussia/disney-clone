@@ -15,6 +15,7 @@ import Originals from "./Originals";
 import Recommends from "./Recommends";
 import Trending from "./Trending";
 import Viewers from "./Viewers";
+import Layout from "./universal/Layout/Layout.tsx";
 
 const Home = () => {
   const disptach = useDispatch();
@@ -62,12 +63,14 @@ const Home = () => {
 
   return (
     <Container>
-      <ImageSlider />
-      <Viewers />
-      <Recommends />
-      <NewDisney />
-      <Originals />
-      <Trending />
+      <Layout>
+        <ImageSlider />
+        <Viewers />
+        <Recommends />
+        <NewDisney />
+        <Originals />
+        <Trending />
+      </Layout>
     </Container>
   );
 };
