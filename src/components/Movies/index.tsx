@@ -1,104 +1,115 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 
-import WrapperPage from "../universal/WrapperPage/index.tsx";
+import WrapperPage from "../universal/WrapperPage";
 import { genreMovies } from "../constants/constants.ts";
-import { selectMovies } from "../../redux/moviesMovies/moviesMoviesSlice";
-// import { movies } from "../../API/api.ts";
+import Layout from "../universal/Layout/index.tsx";
+
+import { selectFilters, setFilters } from "../../redux/moviesSlice";
+// import { moviesAPI } from "../../API/api.ts";
+
+const moviesAll = [
+  {
+    title: "The Shawshank Redemption",
+    image:
+      "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+  },
+  {
+    title: "The Shawshank Redemption",
+    image:
+      "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+  },
+  {
+    title: "The Shawshank Redemption",
+    image:
+      "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+  },
+  {
+    title: "The Shawshank Redemption",
+    image:
+      "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+  },
+  {
+    title: "The Shawshank Redemption",
+    image:
+      "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+  },
+  {
+    title: "The Shawshank Redemption",
+    image:
+      "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+  },
+  {
+    title: "The Shawshank Redemption",
+    image:
+      "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+  },
+  {
+    title: "The Shawshank Redemption",
+    image:
+      "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+  },
+  {
+    title: "The Shawshank Redemption",
+    image:
+      "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+  },
+  {
+    title: "The Shawshank Redemption",
+    image:
+      "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+  },
+];
 
 const Movies = () => {
-  // const moviesAll = movies.getMovies();
-  const moviesAll = [
-    {
-      title: "The Shawshank Redemption",
-      image:
-        "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
-    },
-    {
-      title: "The Shawshank Redemption",
-      image:
-        "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
-    },
-    {
-      title: "The Shawshank Redemption",
-      image:
-        "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
-    },
-    {
-      title: "The Shawshank Redemption",
-      image:
-        "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
-    },
-    {
-      title: "The Shawshank Redemption",
-      image:
-        "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
-    },
-    {
-      title: "The Shawshank Redemption",
-      image:
-        "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
-    },
-    {
-      title: "The Shawshank Redemption",
-      image:
-        "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
-    },
-    {
-      title: "The Shawshank Redemption",
-      image:
-        "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
-    },
-    {
-      title: "The Shawshank Redemption",
-      image:
-        "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
-    },
-    {
-      title: "The Shawshank Redemption",
-      image:
-        "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
-    },
-  ];
+  // const moviesAll = moviesAPI.getMovies();
 
-  const [activeLink, setActiveLink] = useState();
+  const dispatch = useDispatch();
+  const filters = useSelector(selectFilters);
 
   return (
-    <WrapperPage>
-      <MoviesPage>
-        <MoviesInner>
-          <MoviesTitle>Movies</MoviesTitle>
-          <MoviesGenre>
-            {genreMovies &&
-              genreMovies.map((item, key) => (
-                <li
-                  key={key}
-                  onClick={() => {
-                    setActiveLink(key);
-                  }}
-                  className={activeLink === key ? "activeLink" : ""}
-                >
-                  {item}
-                </li>
-              ))}
-          </MoviesGenre>
+    <Layout>
+      <WrapperPage>
+        <MoviesPage>
+          <MoviesInner>
+            <MoviesTitle>Movies</MoviesTitle>
+            <MoviesGenre>
+              {genreMovies &&
+                genreMovies.map((item, index) => (
+                  <li
+                    key={index}
+                    onClick={() => {
+                      dispatch(
+                        setFilters({
+                          category: index,
+                          sortBy: item,
+                        })
+                      );
+                    }}
+                    className={filters.category === index ? "activeLink" : ""}
+                  >
+                    {item}
+                  </li>
+                ))}
+            </MoviesGenre>
 
-          {moviesAll ? (
-            <MoviesCollection>
-              {moviesAll.map((item, key) => (
-                <MoviePreview key={key}>
-                  <img src={item.image} alt="of film" />
-                  <div>{item.title}</div>
-                </MoviePreview>
-              ))}
-            </MoviesCollection>
-          ) : (
-            <div>Загрузка данных</div>
-          )}
-        </MoviesInner>
-      </MoviesPage>
-    </WrapperPage>
+            {moviesAll ? (
+              <MoviesCollection>
+                {moviesAll.map((item, index) => (
+                  <MoviePreview key={index}>
+                    <img src={item.image} alt="of film" />
+                    <div>{item.title}</div>
+                  </MoviePreview>
+                ))}
+              </MoviesCollection>
+            ) : (
+              <div>Загрузка данных</div>
+            )}
+          </MoviesInner>
+        </MoviesPage>
+      </WrapperPage>
+    </Layout>
   );
 };
 

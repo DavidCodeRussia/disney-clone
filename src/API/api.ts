@@ -9,7 +9,7 @@ const instance = axios.default.create({
   },
 });
 
-export const movies = {
+export const moviesAPI = {
   getMovies() {
     return instance.get(``);
   },

@@ -7,8 +7,8 @@ const initialState = {
   trending: null,
 };
 
-const movieSlice = createSlice({
-  name: "movie",
+const homeSlice = createSlice({
+  name: "home",
   initialState,
   reducers: {
     setMovies: (state, action) => {
@@ -20,11 +20,11 @@ const movieSlice = createSlice({
   },
 });
 
-export const { setMovies } = movieSlice.actions;
+export const { setMovies } = homeSlice.actions;
 
-export const selectRecommend = (state) => state.homeMovies.recommend;
-export const selectNewDisney = (state) => state.homeMovies.newDisney;
-export const selectOriginal = (state) => state.homeMovies.originals;
-export const selectTrending = (state) => state.homeMovies.trending;
+export const selectRecommend = (state) => state.home.recommend;
+export const selectNewDisney = (state) => state.home.newDisney;
+export const selectOriginal = (state) => state.home.originals;
+export const selectTrending = (state) => state.home.trending;
 
-export default movieSlice.reducer;
+export default homeSlice.reducer;

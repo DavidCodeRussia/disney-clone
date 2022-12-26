@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import React from "react";
-import Layout from "./universal/Layout/Layout.tsx";
+import Layout from "./universal/Layout/index.tsx";
 
 const Login = () => {
   return (
@@ -12,9 +12,8 @@ const Login = () => {
             <CTALogoOne src="/images/cta-logo-one.svg" alt="" />
             <SighUp>GET IT ALL THERE</SighUp>
             <Description>
-              Get Premier Access to Raya and the Last Dragon for an additional
-              fee with a Disney+ subscription. As of 03/26/21, the price of
-              Disney+ and The Disney Bundle will increase by $1
+              Get Premier Access to Raya and the Last Dragon for an additional fee with a Disney+ subscription. As of
+              03/26/21, the price of Disney+ and The Disney Bundle will increase by $1
             </Description>
             <CTALogoTwo src="/images/cta-logo-two.png" alt="" />
           </CTA>

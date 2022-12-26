@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-import { selectUserName, selectUserPhoto, setUserLoginDetails, setSignOutState } from "../redux/user/userSlice";
+import { selectUserName, selectUserPhoto, setUserLoginDetails, setSignOutState } from "../redux/userSlice";
 import { auth, provider } from "../firebase";
 
 const Header = () => {

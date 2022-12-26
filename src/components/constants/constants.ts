@@ -1,4 +1,5 @@
 export const genreMovies: string[] = [
+  "All",
   "Drama",
   "Crime",
   "Action",
