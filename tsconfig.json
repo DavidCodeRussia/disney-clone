@@ -7,7 +7,9 @@
       "@components/*": ["src/components/*"],
       "@styles/*": ["src/sass/*"],
       "@modules/*": ["src/modules/*"]
-    }
+    },
+    "jsx": "react",
+    "esModuleInterop": true
   },
 
   "exclude": ["node_modules", "dist"]

@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
 import { selectUserName, selectUserPhoto, setUserLoginDetails, setSignOutState } from "../redux/userSlice";
 import { auth, provider } from "../firebase";
@@ -66,30 +66,30 @@ const Header = () => {
       ) : (
         <>
           <NavMenu>
-            <a href="/home">
+            <Link to="/home">
               <img src="/images/home-icon.svg" alt="HOME" />
               <span>HOME</span>
-            </a>
-            <a>
+            </Link>
+            <Link>
               <img src="/images/search-icon.svg" alt="HOME" />
               <span>SEARCH</span>
-            </a>
-            <a>
+            </Link>
+            <Link>
               <img src="/images/watchlist-icon.svg" alt="HOME" />
               <span>WATCHLIST</span>
-            </a>
-            <a>
+            </Link>
+            <Link>
               <img src="/images/original-icon.svg" alt="HOME" />
               <span>ORIGINALS</span>
-            </a>
-            <a href="/movies">
+            </Link>
+            <Link to="/movies">
               <img src="/images/movie-icon.svg" alt="HOME" />
               <span>MOVIES</span>
-            </a>
-            <a>
+            </Link>
+            <Link>
               <img src="/images/series-icon.svg" alt="HOME" />
               <span>SERIES</span>
-            </a>
+            </Link>
           </NavMenu>
           <SignOut>
             <UserImg src={userPhoto} alt={userName} />

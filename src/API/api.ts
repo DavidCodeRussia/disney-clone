@@ -2,10 +2,10 @@ import * as axios from "axios";
 
 const instance = axios.default.create({
   withCredentials: true,
-  baseURL: "https://imdb-top-100-movies.p.rapidapi.com/",
+  baseURL: "https://moviesdatabase.p.rapidapi.com/titles/x/upcoming",
   headers: {
     "X-RapidAPI-Key": "310c98161dmsh1481b05816c3d97p183237jsnca8393c226ae",
-    "X-RapidAPI-Host": "imdb-top-100-movies.p.rapidapi.com",
+    "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",
   },
 });
 

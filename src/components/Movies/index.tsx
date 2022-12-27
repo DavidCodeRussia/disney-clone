@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
 
-import WrapperPage from "../universal/WrapperPage";
-import { genreMovies } from "../constants/constants.ts";
-import Layout from "../universal/Layout/index.tsx";
+import WrapperPage from "../universal/WrapperPage/index";
+import MoviesGenre from "./MoviesGenre/MoviesGenre";
+import Layout from "../universal/Layout/index";
 
-import { selectFilters, setFilters } from "../../redux/moviesSlice";
-// import { moviesAPI } from "../../API/api.ts";
+import { moviesAPI } from "../../API/api";
+import { setMoviesThunk } from "../../redux/moviesSlice.js";
 
 const moviesAll = [
   {
@@ -63,10 +62,9 @@ const moviesAll = [
 ];
 
 const Movies = () => {
-  // const moviesAll = moviesAPI.getMovies();
-
-  const dispatch = useDispatch();
-  const filters = useSelector(selectFilters);
+  useEffect(() => {
+    setMoviesThunk();
+  }, []);
 
   return (
     <Layout>
@@ -74,25 +72,7 @@ const Movies = () => {
         <MoviesPage>
           <MoviesInner>
             <MoviesTitle>Movies</MoviesTitle>
-            <MoviesGenre>
-              {genreMovies &&
-                genreMovies.map((item, index) => (
-                  <li
-                    key={index}
-                    onClick={() => {
-                      dispatch(
-                        setFilters({
-                          category: index,
-                          sortBy: item,
-                        })
-                      );
-                    }}
-                    className={filters.category === index ? "activeLink" : ""}
-                  >
-                    {item}
-                  </li>
-                ))}
-            </MoviesGenre>
+            <MoviesGenre />
 
             {moviesAll ? (
               <MoviesCollection>
@@ -129,32 +109,18 @@ const MoviesTitle = styled.h1`
   margin-bottom: 25px;
 `;
 
-const MoviesGenre = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-
-  li {
-    margin: 0 10px 0 0;
-    cursor: pointer;
-  }
-
-  .activeLink {
-    color: #000;
-  }
-`;
-
 const MoviesCollection = styled.div`
   display: flex;
+  gap: 15px;
   flex-wrap: wrap;
   width: 100%;
 `;
 
 const MoviePreview = styled.a`
-  margin: 15px 15px 5px 0;
   width: 23%;
   min-width: 150px;
   list-style: none;
+  flex-grow: 1;
 
   img {
     width: 100%;
