@@ -1,15 +1,15 @@
 import styled from "styled-components";
+
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { selectRecommend } from "../../../redux/homeSlice";
 
-import { selectOriginal } from "../redux/homeSlice";
-
-const Originals = () => {
-  const movies = useSelector(selectOriginal);
+const Recommends = () => {
+  const movies = useSelector(selectRecommend);
 
   return (
     <Container>
-      <h4>Originals</h4>
+      <h4>Recommended for You</h4>
       <Content>
         {movies &&
           movies.map((movie, key) => (
@@ -71,4 +71,4 @@ const Wrap = styled.div`
   }
 `;
 
-export default Originals;
+export default Recommends;

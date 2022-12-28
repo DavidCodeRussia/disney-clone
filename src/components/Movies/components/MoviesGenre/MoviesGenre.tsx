@@ -3,17 +3,14 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import cn from "classnames";
 
-import { genreMovies } from "../../constants/constants";
-import { selectFilters, setFilters, selectSort, setSort } from "../../../redux/moviesSlice";
+import { genreMovies } from "../../../../constants/constants";
+import { selectSort, setSort } from "../../../../redux/moviesFilter";
+
+import { selectCategory, setCategory } from "../../../../redux/moviesFilter";
+
 import s from "./MoviesGenre.module.scss";
 
 const arr = ["rating", "year", "alphabet"];
-
-interface Filters {
-  alphabet: string;
-  category: number;
-}
-
 interface Sort {
   choosedOptions: 0;
   rating: 0;
@@ -23,7 +20,7 @@ interface Sort {
 
 const MoviesGenre = () => {
   const dispatch = useDispatch();
-  const filters: Filters = useSelector(selectFilters);
+  const filters: number = useSelector(selectCategory);
 
   const popupMenu = useRef();
   const [popupOpen, setPopupOpen] = useState(true);
@@ -39,9 +36,8 @@ const MoviesGenre = () => {
     dispatch(
       setSort({
         choosedOptions: index,
-        rating: 0,
-        year: 0,
-        alphabet: "a",
+        type: "popular",
+        order: "desc",
       })
     );
     setPopupOpen(!popupOpen);
@@ -63,14 +59,9 @@ const MoviesGenre = () => {
             <li
               key={index}
               onClick={() => {
-                dispatch(
-                  setFilters({
-                    category: index,
-                    genre: item,
-                  })
-                );
+                dispatch(setCategory(index));
               }}
-              className={filters.category === index ? s.activeLinkMovies : ""}
+              className={filters === index ? s.activeLinkMovies : ""}
             >
               {item}
             </li>

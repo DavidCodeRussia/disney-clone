@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import db from "../firebase";
-import Header from "./Header";
+import db from "../../../firebase";
+import Header from "../../Header.js";
 
 const Detail = () => {
   const { id } = useParams();

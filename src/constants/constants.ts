@@ -11,3 +11,5 @@ export const genreMovies: string[] = [
   "Sci-Fi",
   "Fantasy",
 ];
+
+export const noPhoto = "https://anitekh.ru/wp-content/uploads/2019/10/no-image.jpg";

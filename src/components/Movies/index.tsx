@@ -1,69 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import WrapperPage from "../universal/WrapperPage/index";
-import MoviesGenre from "./MoviesGenre/MoviesGenre";
+import MoviesGenre from "./components/MoviesGenre/MoviesGenre";
 import Layout from "../universal/Layout/index";
 
 import { moviesAPI } from "../../API/api";
-import { setMoviesThunk } from "../../redux/moviesSlice.js";
-
-const moviesAll = [
-  {
-    title: "The Shawshank Redemption",
-    image:
-      "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
-  },
-  {
-    title: "The Shawshank Redemption",
-    image:
-      "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
-  },
-  {
-    title: "The Shawshank Redemption",
-    image:
-      "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
-  },
-  {
-    title: "The Shawshank Redemption",
-    image:
-      "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
-  },
-  {
-    title: "The Shawshank Redemption",
-    image:
-      "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
-  },
-  {
-    title: "The Shawshank Redemption",
-    image:
-      "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
-  },
-  {
-    title: "The Shawshank Redemption",
-    image:
-      "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
-  },
-  {
-    title: "The Shawshank Redemption",
-    image:
-      "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
-  },
-  {
-    title: "The Shawshank Redemption",
-    image:
-      "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
-  },
-  {
-    title: "The Shawshank Redemption",
-    image:
-      "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
-  },
-];
+import { noPhoto } from "../../constants/constants";
 
 const Movies = () => {
+  const [movies, setMovies] = useState([]);
+
   useEffect(() => {
-    setMoviesThunk();
+    const dataFetch = async () => {
+      const data = await moviesAPI.getMovies();
+      setMovies(data.data.results);
+    };
+    dataFetch();
   }, []);
 
   return (
@@ -74,12 +27,12 @@ const Movies = () => {
             <MoviesTitle>Movies</MoviesTitle>
             <MoviesGenre />
 
-            {moviesAll ? (
+            {movies.length !== 0 ? (
               <MoviesCollection>
-                {moviesAll.map((item, index) => (
+                {movies.map((item, index) => (
                   <MoviePreview key={index}>
-                    <img src={item.image} alt="of film" />
-                    <div>{item.title}</div>
+                    <img src={item.primaryImage === null ? noPhoto : item.primaryImage.url} alt="of film" />
+                    <div>{item.titleText.text}</div>
                   </MoviePreview>
                 ))}
               </MoviesCollection>
