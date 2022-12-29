@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
 
 import WrapperPage from "../universal/WrapperPage/index";
 import MoviesGenre from "./components/MoviesGenre/MoviesGenre";
@@ -7,14 +8,17 @@ import Layout from "../universal/Layout/index";
 
 import { moviesAPI } from "../../API/api";
 import { noPhoto } from "../../constants/constants";
+import { selectMovies, setMovies } from "../../redux/moviesSlice";
 
 const Movies = () => {
-  const [movies, setMovies] = useState([]);
+  const movies = useSelector(selectMovies);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const dataFetch = async () => {
       const data = await moviesAPI.getMovies();
-      setMovies(data.data.results);
+      dispatch(setMovies(data.data.results));
     };
     dataFetch();
   }, []);
@@ -27,7 +31,7 @@ const Movies = () => {
             <MoviesTitle>Movies</MoviesTitle>
             <MoviesGenre />
 
-            {movies.length !== 0 ? (
+            {movies && movies.length !== 0 ? (
               <MoviesCollection>
                 {movies.map((item, index) => (
                   <MoviePreview key={index}>

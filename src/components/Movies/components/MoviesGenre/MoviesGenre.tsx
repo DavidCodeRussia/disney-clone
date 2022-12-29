@@ -5,8 +5,8 @@ import cn from "classnames";
 
 import { genreMovies } from "../../../../constants/constants";
 import { selectSort, setSort } from "../../../../redux/moviesFilter";
-
 import { selectCategory, setCategory } from "../../../../redux/moviesFilter";
+import { moviesAPI } from "../../../../API/api";
 
 import s from "./MoviesGenre.module.scss";
 
@@ -51,6 +51,10 @@ const MoviesGenre = () => {
     };
   }, []);
 
+  const onSwitchCategory = async () => {
+    const data = await moviesAPI.getMovies();
+  };
+
   return (
     <div className={s.genreMoviesWrapper}>
       <div className={s.genreMovies}>
@@ -67,7 +71,7 @@ const MoviesGenre = () => {
             </li>
           ))}
       </div>
-      <div className={s.sortWrapper} ref={popupMenu}>
+      {/* <div className={s.sortWrapper} ref={popupMenu}>
         <div className={s.sort} onClick={() => setPopupOpen(true)}>
           <img
             className={cn({
@@ -99,7 +103,7 @@ const MoviesGenre = () => {
               })}
           </div>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };

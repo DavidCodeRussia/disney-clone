@@ -1,15 +1,11 @@
 export const genreMovies: string[] = [
   "All",
-  "Drama",
-  "Crime",
-  "Action",
-  "Biography",
-  "History",
-  "Adventure",
-  "Western",
-  "Romance",
-  "Sci-Fi",
-  "Fantasy",
+  "TV Episode",
+  "TV Series",
+  "TV Mini Series",
+  "Movie",
+  "Video Game",
+  "Short",
 ];
 
 export const noPhoto = "https://anitekh.ru/wp-content/uploads/2019/10/no-image.jpg";
