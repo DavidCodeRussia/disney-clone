@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -7,13 +7,29 @@ import MoviesGenre from "./components/MoviesGenre/MoviesGenre";
 import Layout from "../universal/Layout/index";
 
 import { moviesAPI } from "../../API/api";
-import { noPhoto } from "../../constants/constants";
+import { noPhoto, genreMovies } from "../../constants/constants";
 import { selectMovies, setMovies } from "../../redux/moviesSlice";
 
 const Movies = () => {
-  const movies = useSelector(selectMovies);
-
   const dispatch = useDispatch();
+  const movies = useSelector(selectMovies);
+  const [choosedIndexMovies, setChoosedIndexMovies] = useState(0);
+
+  const currentCategories = genreMovies.find((item, ind) => ind === choosedIndexMovies);
+
+  let [filteredMovies, setFilteredMovies] = useState();
+
+  console.log("movies.length > 0", movies.length > 0);
+  console.log("movies[0].titleType.categories.length > 1", movies[0].titleType.categories.length > 1);
+
+  useEffect(() => {
+    if (movies.length > 0 && movies[0].titleType.categories.length > 1) {
+      let filtered = movies.filter((item, inx) => item.titleType.categories[0].value === currentCategories);
+      console.log("filtered", filtered);
+      setFilteredMovies(filtered);
+    }
+    console.log("filteredMovies", filteredMovies);
+  }, [movies, currentCategories]);
 
   useEffect(() => {
     const dataFetch = async () => {
@@ -29,7 +45,7 @@ const Movies = () => {
         <MoviesPage>
           <MoviesInner>
             <MoviesTitle>Movies</MoviesTitle>
-            <MoviesGenre />
+            <MoviesGenre setChoosedIndexMovies={setChoosedIndexMovies} />
 
             {movies && movies.length !== 0 ? (
               <MoviesCollection>
@@ -68,20 +84,16 @@ const MoviesTitle = styled.h1`
 
 const MoviesCollection = styled.div`
   display: flex;
-  gap: 15px;
+  gap: 25px;
   flex-wrap: wrap;
-  width: 100%;
 `;
 
 const MoviePreview = styled.a`
-  width: 23%;
-  min-width: 150px;
   list-style: none;
-  flex-grow: 1;
 
   img {
-    width: 100%;
-    height: auto;
+    max-width: 245px;
+    min-height: 435px;
   }
 `;
 

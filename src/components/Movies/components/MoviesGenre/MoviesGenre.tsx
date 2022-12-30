@@ -18,7 +18,7 @@ interface Sort {
   alphabet: "a";
 }
 
-const MoviesGenre = () => {
+const MoviesGenre = ({ setChoosedIndexMovies }) => {
   const dispatch = useDispatch();
   const filters: number = useSelector(selectCategory);
 
@@ -51,9 +51,7 @@ const MoviesGenre = () => {
     };
   }, []);
 
-  const onSwitchCategory = async () => {
-    const data = await moviesAPI.getMovies();
-  };
+  const onSwitchCategory = async () => {};
 
   return (
     <div className={s.genreMoviesWrapper}>
@@ -64,6 +62,7 @@ const MoviesGenre = () => {
               key={index}
               onClick={() => {
                 dispatch(setCategory(index));
+                setChoosedIndexMovies(index);
               }}
               className={filters === index ? s.activeLinkMovies : ""}
             >

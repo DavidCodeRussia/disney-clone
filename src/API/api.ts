@@ -10,7 +10,7 @@ const instance = axios.default.create({
 });
 
 export const moviesAPI = {
-  getMovies(page = 2) {
+  getMovies(page = 3) {
     return instance.get(`/titles/x/upcoming?page=${page}`);
   },
   // getFilterMovies(page = 2) {
