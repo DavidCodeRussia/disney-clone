@@ -7,37 +7,26 @@ import MoviesGenre from "./components/MoviesGenre/MoviesGenre";
 import Layout from "../universal/Layout/index";
 
 import { moviesAPI } from "../../API/api";
-import { noPhoto, genreMovies } from "../../constants/constants";
+import { noPhoto } from "../../constants/constants";
 import { selectMovies, setMovies } from "../../redux/moviesSlice";
+import { selectCategory } from "../../redux/moviesFilterSlice";
 
 const Movies = () => {
   const dispatch = useDispatch();
   const movies = useSelector(selectMovies);
-  const [choosedIndexMovies, setChoosedIndexMovies] = useState(0);
-
-  const currentCategories = genreMovies.find((item, ind) => ind === choosedIndexMovies);
-
-  let [filteredMovies, setFilteredMovies] = useState();
-
-  console.log("movies.length > 0", movies.length > 0);
-  console.log("movies[0].titleType.categories.length > 1", movies[0].titleType.categories.length > 1);
-
-  useEffect(() => {
-    if (movies.length > 0 && movies[0].titleType.categories.length > 1) {
-      let filtered = movies.filter((item, inx) => item.titleType.categories[0].value === currentCategories);
-      console.log("filtered", filtered);
-      setFilteredMovies(filtered);
-    }
-    console.log("filteredMovies", filteredMovies);
-  }, [movies, currentCategories]);
+  const category = useSelector(selectCategory);
 
   useEffect(() => {
     const dataFetch = async () => {
-      const data = await moviesAPI.getMovies();
-      dispatch(setMovies(data.data.results));
+      let response = await moviesAPI.getMovies(category);
+      if (response.status === 200) {
+        dispatch(setMovies(response.data));
+      } else {
+        alert("Ошибка HTTP: " + response.status);
+      }
     };
     dataFetch();
-  }, []);
+  }, [category]);
 
   return (
     <Layout>
@@ -45,14 +34,17 @@ const Movies = () => {
         <MoviesPage>
           <MoviesInner>
             <MoviesTitle>Movies</MoviesTitle>
-            <MoviesGenre setChoosedIndexMovies={setChoosedIndexMovies} />
+            <MoviesGenre />
 
             {movies && movies.length !== 0 ? (
               <MoviesCollection>
                 {movies.map((item, index) => (
                   <MoviePreview key={index}>
-                    <img src={item.primaryImage === null ? noPhoto : item.primaryImage.url} alt="of film" />
-                    <div>{item.titleText.text}</div>
+                    <img
+                      src={item.img === null ? noPhoto : item.img}
+                      alt="of film"
+                    />
+                    <div>{item.name}</div>
                   </MoviePreview>
                 ))}
               </MoviesCollection>
@@ -90,10 +82,15 @@ const MoviesCollection = styled.div`
 
 const MoviePreview = styled.a`
   list-style: none;
+  max-width: 245px;
 
   img {
     max-width: 245px;
     min-height: 435px;
+  }
+
+  div {
+    flex-wrap: wrap;
   }
 `;
 

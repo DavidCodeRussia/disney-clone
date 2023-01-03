@@ -3,7 +3,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./userSlice";
 import homeReducer from "./homeSlice";
 import moviesReducer from "./moviesSlice";
-import moviesFilterReducer from "./moviesFilter";
+import moviesFilterReducer from "./moviesFilterSlice";
 
 export default configureStore({
   reducer: {

@@ -6,7 +6,7 @@ const WrapperPage = ({ children }) => {
 };
 
 const Wrapper = styled.div`
-  padding: 80px 40px;
+  padding: 40px 40px;
 `;
 
 export default WrapperPage;

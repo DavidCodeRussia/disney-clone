@@ -67,16 +67,16 @@ const Home = () => {
   }, [userName]);
 
   return (
-    <Container>
-      <Layout>
+    <Layout>
+      <Container>
         <ImageSlider />
         <Viewers />
         <Recommends />
         <NewDisney />
         <Originals />
         <Trending />
-      </Layout>
-    </Container>
+      </Container>
+    </Layout>
   );
 };
 
@@ -86,7 +86,7 @@ const Container = styled.main`
   overflow-x: hidden;
   display: block;
   top: 72px;
-  padding:  calc(3.5w + 5px);
+  padding:  calc(3.5w + 5px);   
 
   &:after {
     background: url("images/home-background.png") center center / cover no-repeat fixed;

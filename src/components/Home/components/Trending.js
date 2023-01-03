@@ -26,7 +26,11 @@ const Trending = () => {
 };
 
 const Container = styled.div`
-  padding: 0 0 20px;
+  padding-bottom: 80px;
+
+  h4 {
+    margin: 0 0 15px 0;
+  }
 `;
 const Content = styled.div`
   display: grid;

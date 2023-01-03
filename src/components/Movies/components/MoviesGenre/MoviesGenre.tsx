@@ -4,8 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import cn from "classnames";
 
 import { genreMovies } from "../../../../constants/constants";
-import { selectSort, setSort } from "../../../../redux/moviesFilter";
-import { selectCategory, setCategory } from "../../../../redux/moviesFilter";
+import { selectSort, setSort } from "../../../../redux/moviesFilterSlice";
+import {
+  selectCategory,
+  setCategory,
+} from "../../../../redux/moviesFilterSlice";
 import { moviesAPI } from "../../../../API/api";
 
 import s from "./MoviesGenre.module.scss";
@@ -18,7 +21,7 @@ interface Sort {
   alphabet: "a";
 }
 
-const MoviesGenre = ({ setChoosedIndexMovies }) => {
+const MoviesGenre = () => {
   const dispatch = useDispatch();
   const filters: number = useSelector(selectCategory);
 
@@ -51,8 +54,6 @@ const MoviesGenre = ({ setChoosedIndexMovies }) => {
     };
   }, []);
 
-  const onSwitchCategory = async () => {};
-
   return (
     <div className={s.genreMoviesWrapper}>
       <div className={s.genreMovies}>
@@ -61,16 +62,15 @@ const MoviesGenre = ({ setChoosedIndexMovies }) => {
             <li
               key={index}
               onClick={() => {
-                dispatch(setCategory(index));
-                setChoosedIndexMovies(index);
+                dispatch(setCategory(item));
               }}
               className={filters === index ? s.activeLinkMovies : ""}
             >
-              {item}
+              <span>{item}</span>
             </li>
           ))}
       </div>
-      {/* <div className={s.sortWrapper} ref={popupMenu}>
+      <div className={s.sortWrapper} ref={popupMenu}>
         <div className={s.sort} onClick={() => setPopupOpen(true)}>
           <img
             className={cn({
@@ -102,7 +102,7 @@ const MoviesGenre = ({ setChoosedIndexMovies }) => {
               })}
           </div>
         )}
-      </div> */}
+      </div>
     </div>
   );
 };
