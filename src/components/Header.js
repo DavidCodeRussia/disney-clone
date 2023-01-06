@@ -4,7 +4,12 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 
-import { selectUserName, selectUserPhoto, setUserLoginDetails, setSignOutState } from "../redux/userSlice";
+import {
+  selectUserName,
+  selectUserPhoto,
+  setUserLoginDetails,
+  setSignOutState,
+} from "../redux/userSlice";
 import { auth, provider } from "../firebase";
 
 const Header = () => {
@@ -57,9 +62,11 @@ const Header = () => {
 
   return (
     <Nav>
-      <Logo>
-        <img src="/images/logo.svg" alt="Disney+" />
-      </Logo>
+      <Link to="/home">
+        <Logo>
+          <img src="/images/logo.svg" alt="Disney+" />
+        </Logo>
+      </Link>
 
       {!userName ? (
         <Login onClick={handleAuth}>Login</Login>
@@ -118,7 +125,7 @@ const Nav = styled.nav`
   z-index: 3;
 `;
 
-const Logo = styled.a`
+const Logo = styled.div`
   padding: 0;
   width: 80px;
   margin-top: 4px;

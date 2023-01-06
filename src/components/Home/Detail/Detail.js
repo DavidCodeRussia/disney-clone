@@ -31,17 +31,23 @@ const Detail = () => {
         <img src={detailData.backgroundImg} alt={detailData.title} />
       </Background>
 
-      <ImageTitle>
-        <img src={detailData.titleImg} alt={detailData.title} />
-      </ImageTitle>
+      {detailData.titleImg ? (
+        <ImageTitle>
+          <img src={detailData.titleImg} alt={detailData.title} />
+        </ImageTitle>
+      ) : (
+        <ImageTitle>
+          <img src="/images/disney-logo.png" alt="" />
+        </ImageTitle>
+      )}
 
       <ContentMeta>
         <Controls>
-          <Player>
+          <Player href="https://www.preview.disneyplus.com/unavailable?cid=DTCI-Synergy-Disneycom-Site-Acquisition-Originals-US-StarWars-StarWarsBadBatch-EN-HomeScreenHero-NA-NA">
             <img src="/images/play-icon-black.png" alt="" />
             <span>Play</span>
           </Player>
-          <Trailer>
+          <Trailer href="https://www.preview.disneyplus.com/unavailable?cid=DTCI-Synergy-Disneycom-Site-Acquisition-Originals-US-StarWars-StarWarsBadBatch-EN-HomeScreenHero-NA-NA">
             <img src="/images/play-icon-white.png" alt="" />
             <span>Trailer</span>
           </Trailer>
@@ -93,7 +99,7 @@ const Background = styled.div`
 const ImageTitle = styled.div`
   align-items: flex-end;
   display: flex;
-  // webkit-box-pack: start;
+
   justify-content: start;
   margin: 0px auto;
   height: 30vw;
@@ -119,7 +125,7 @@ const Controls = styled.div`
   min-height: 56px;
 `;
 
-const Player = styled.button`
+const Player = styled.a`
   font-size: 15px;
   margin: 0 22px 0 0;
   padding: 0 24px;

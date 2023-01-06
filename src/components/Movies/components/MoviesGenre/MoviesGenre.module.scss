@@ -1,3 +1,4 @@
+@import "../../../../scss/variables.scss";
 .genreMoviesWrapper {
   display: flex;
   justify-content: space-between;
@@ -98,7 +99,7 @@
         }
       }
       .activeLinkSort {
-        color: orange;
+        color: $light_blue;
         background-color: rgb(58, 57, 57);
       }
     }

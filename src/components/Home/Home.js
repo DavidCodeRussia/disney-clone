@@ -27,9 +27,10 @@ const Home = () => {
   let newDisneys = [];
   let originals = [];
   let trending = [];
+  let imgSlide = [];
 
   useEffect(() => {
-    if (!recommended) {
+    if (recommended?.length === 0) {
       db.collection("movies").onSnapshot((snapshot) => {
         snapshot.docs.map((doc) => {
           switch (doc.data().type) {
@@ -49,6 +50,10 @@ const Home = () => {
               trending = [...trending, { id: doc.id, ...doc.data() }];
               break;
 
+            case "imgSlide":
+              imgSlide = [...imgSlide, { id: doc.id, ...doc.data() }];
+              break;
+
             default:
               break;
           }
@@ -60,6 +65,7 @@ const Home = () => {
             newDisney: newDisneys,
             originals: originals,
             trending: trending,
+            imgSlide: imgSlide,
           })
         );
       });

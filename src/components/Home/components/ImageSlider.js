@@ -3,7 +3,13 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import { useSelector } from "react-redux";
+import { selectImgSlide } from "../../../redux/homeSlice";
+import { Link } from "react-router-dom";
+
 const ImageSlider = () => {
+  const movies = useSelector(selectImgSlide);
+
   let settings = {
     centerMode: true,
     dots: true,
@@ -16,26 +22,14 @@ const ImageSlider = () => {
 
   return (
     <Carousel {...settings}>
-      <Wrap>
-        <a href="">
-          <img src="/images/slider-badging.jpg" alt="" />
-        </a>
-      </Wrap>
-      <Wrap>
-        <a href="">
-          <img src="/images/slider-scale.jpg" alt="" />
-        </a>
-      </Wrap>
-      <Wrap>
-        <a href="">
-          <img src="/images/slider-badag.jpg" alt="" />
-        </a>
-      </Wrap>
-      <Wrap>
-        <a href="">
-          <img src="/images/slider-scales.jpg" alt="" />
-        </a>
-      </Wrap>
+      {movies &&
+        movies.map((item, key) => (
+          <Wrap key={key}>
+            <Link to={"/detail/" + item.id}>
+              <img src={item.carouselImg} alt="" />
+            </Link>
+          </Wrap>
+        ))}
     </Carousel>
   );
 };

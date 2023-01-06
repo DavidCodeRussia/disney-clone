@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  recommend: null,
-  newDisney: null,
-  originals: null,
-  trending: null,
+  recommend: [],
+  newDisney: [],
+  originals: [],
+  trending: [],
+  imgSlide: [],
 };
 
 const homeSlice = createSlice({
@@ -16,6 +17,7 @@ const homeSlice = createSlice({
       state.newDisney = action.payload.newDisney;
       state.originals = action.payload.originals;
       state.trending = action.payload.trending;
+      state.imgSlide = action.payload.imgSlide;
     },
   },
 });
@@ -26,5 +28,6 @@ export const selectRecommend = (state) => state.home.recommend;
 export const selectNewDisney = (state) => state.home.newDisney;
 export const selectOriginal = (state) => state.home.originals;
 export const selectTrending = (state) => state.home.trending;
+export const selectImgSlide = (state) => state.home.imgSlide;
 
 export default homeSlice.reducer;

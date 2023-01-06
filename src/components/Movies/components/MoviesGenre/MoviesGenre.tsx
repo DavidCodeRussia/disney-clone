@@ -9,25 +9,18 @@ import {
   selectCategory,
   setCategory,
 } from "../../../../redux/moviesFilterSlice";
-import { moviesAPI } from "../../../../API/api";
 
 import s from "./MoviesGenre.module.scss";
 
-const arr = ["rating", "year", "alphabet"];
-interface Sort {
-  choosedOptions: 0;
-  rating: 0;
-  year: 0;
-  alphabet: "a";
-}
+const arr = ["rating", "year", "durationTime"];
 
 const MoviesGenre = () => {
   const dispatch = useDispatch();
-  const filters: number = useSelector(selectCategory);
+  const filters: string = useSelector(selectCategory);
 
   const popupMenu = useRef();
   const [popupOpen, setPopupOpen] = useState(true);
-  const activeLink: Sort = useSelector(selectSort);
+  const activeLink = useSelector(selectSort);
 
   const outsideClick = (e) => {
     if (!e.path.includes(popupMenu.current)) {
@@ -35,14 +28,8 @@ const MoviesGenre = () => {
     }
   };
 
-  const onSelectItem = (index) => {
-    dispatch(
-      setSort({
-        choosedOptions: index,
-        type: "popular",
-        order: "desc",
-      })
-    );
+  const onSelectItem = (item: string) => {
+    dispatch(setSort(item));
     setPopupOpen(!popupOpen);
   };
 
@@ -64,7 +51,7 @@ const MoviesGenre = () => {
               onClick={() => {
                 dispatch(setCategory(item));
               }}
-              className={filters === index ? s.activeLinkMovies : ""}
+              className={filters === item ? s.activeLinkMovies : ""}
             >
               <span>{item}</span>
             </li>
@@ -80,7 +67,7 @@ const MoviesGenre = () => {
             alt="Arrow"
           />
           sort by:
-          <span>{arr[activeLink.choosedOptions]}</span>
+          <span>{activeLink}</span>
         </div>
         {popupOpen && (
           <div className={s.dropDownMenu}>
@@ -90,10 +77,10 @@ const MoviesGenre = () => {
                   <div
                     key={ind}
                     className={cn(s.dropDownItem, {
-                      [s.activeLinkSort]: ind === activeLink.choosedOptions,
+                      [s.activeLinkSort]: item === activeLink,
                     })}
                     onClick={() => {
-                      onSelectItem(ind);
+                      onSelectItem(item);
                     }}
                   >
                     {item}
