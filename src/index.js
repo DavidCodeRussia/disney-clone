@@ -7,7 +7,7 @@ import store from "./redux/store.js";
 import reportWebVitals from "./reportWebVitals";
 
 import "./index.scss";
-window.store = store.getState();
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>

@@ -7,7 +7,7 @@ import WrapperPage from "../universal/WrapperPage/index";
 import MoviesGenre from "./components/MoviesGenre/MoviesGenre";
 import Layout from "../universal/Layout/index";
 
-import { moviesAPI } from "../../API/api";
+import { moviesAPI } from "../../api/api";
 import { noPhoto } from "../../constants/constants";
 import {
   selectLoading,

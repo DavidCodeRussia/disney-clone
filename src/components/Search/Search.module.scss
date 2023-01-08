@@ -5,6 +5,42 @@
     min-height: 87vh;
     background-color: gray;
     padding: 65px 65px 35px 65px;
+
+    h1 {
+      margin: 0 0 15px;
+    }
+
+    .searchField {
+      width: 58%;
+      margin: 0 0 15px 0;
+    }
+    .searchMovies {
+      display: flex;
+      justify-content: space-between;
+      gap: 25px;
+      flex-wrap: wrap;
+
+      .movie {
+        max-width: 245px;
+        animation: 0.5s show ease;
+
+        @keyframes show {
+          0% {
+            opacity: 0;
+          }
+          100% {
+            opacity: 1;
+          }
+        }
+        img {
+          max-width: 245px;
+          min-height: 435px;
+        }
+        div {
+          flex-wrap: wrap;
+        }
+      }
+    }
   }
   padding: 40px;
 }

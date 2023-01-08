@@ -77,7 +77,7 @@ const Header = () => {
               <img src="/images/home-icon.svg" alt="HOME" />
               <span>HOME</span>
             </Link>
-            <Link>
+            <Link to="/search">
               <img src="/images/search-icon.svg" alt="HOME" />
               <span>SEARCH</span>
             </Link>

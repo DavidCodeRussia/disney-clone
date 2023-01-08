@@ -1,0 +1,164 @@
+{
+  "movies": [
+    {
+      "name": "Avatar 4",
+      "img": "https://m.media-amazon.com/images/M/MV5BNmM1NmY4N2QtNmVkOS00MjMyLWI5ZGUtYWYxMDRjY2MzNDdiXkEyXkFqcGdeQXVyMTAwMDAwMA@@._V1_.jpg",
+      "category": "Fantastics",
+      "rating": 1,
+      "year": 2020,
+      "durationTime": "01:12:45"
+    },
+    {
+      "name": "Into The Omniverse",
+      "img": "https://m.media-amazon.com/images/M/MV5BZDJjNWFlNmQtZTk5NC00OTBjLTkyNjgtYzk3YjdmNTYyNzY2XkEyXkFqcGdeQXVyMTI3MTQzNzk1._V1_.jpg",
+      "category": "Fantastics",
+      "rating": 2,
+      "year": 2021,
+      "durationTime": "01:15:45"
+    },
+    {
+      "name": "The Gods of Darkness",
+      "img": "https://m.media-amazon.com/images/M/MV5BZGRjMTQ5NTAtYmM3Yi00ODFlLWE5ZDUtNjM1MGUwYzZiNjU2XkEyXkFqcGdeQXVyMTI3MTQzNzk1._V1_.jpg",
+      "category": "Horrors",
+      "rating": 3,
+      "year": 2022,
+      "durationTime": "01:10:45"
+    },
+    {
+      "name": "The Fatal Party",
+      "img": "https://m.media-amazon.com/images/M/MV5BMGYyZTA2ODktZjBiMy00YmMwLThmZDQtMTlmMDA5MGM5YTMyXkEyXkFqcGdeQXVyMTI3MTQzNzk1._V1_.jpg",
+      "category": "Horrors",
+      "rating": 4,
+      "year": 2023,
+      "durationTime": "01:22:45"
+    },
+    {
+      "name": "The Lone Angel",
+      "img": "https://m.media-amazon.com/images/M/MV5BYTBmMTEzYjUtODE3Mi00ZDk1LTkwMjQtZDQ2OWNjZDIxOWUxXkEyXkFqcGdeQXVyMTI3MTQzNzk1._V1_.jpg",
+      "category": "Horrors",
+      "rating": 5,
+      "year": 2024,
+      "durationTime": "01:32:45"
+    },
+    {
+      "name": "Weston's 14th Birthday",
+      "img": "https://m.media-amazon.com/images/M/MV5BMTA5NzhiZmMtOGUyYy00ZWFmLThmMzYtYTc1NWQ0NGM2M2MxXkEyXkFqcGdeQXVyMTU0MzQzNDcw._V1_.jpg",
+      "category": "Histories",
+      "rating": 6,
+      "year": 2025,
+      "durationTime": "01:42:45"
+    },
+    {
+      "name": "Alian InterLaper",
+      "img": "https://m.media-amazon.com/images/M/MV5BYjNkYzNhMzgtY2EzMS00MTQ5LTgyYWEtOGM2NWIyMmU1MjQ2XkEyXkFqcGdeQXVyODg2NDM5MTI@._V1_.jpg",
+      "category": "Cartoons",
+      "rating": 7,
+      "year": 2026,
+      "durationTime": "01:52:45"
+    },
+    {
+      "name": "Avengers: Secret Wars",
+      "img": "https://m.media-amazon.com/images/M/MV5BZWE0MjkyNGQtMjgwMS00NGIwLTg5YmEtYThlOTQ1NTZmNWFmXkEyXkFqcGdeQXVyMTEzMTI1Mjk3._V1_.jpg",
+      "category": "Fantastics",
+      "rating": 8,
+      "year": 2027,
+      "durationTime": "01:33:25"
+    },
+    {
+      "name": "100 Years",
+      "img": "https://m.media-amazon.com/images/M/MV5BMWY3YWY1OTktNjc3Ni00NThiLWI0ODYtOTNjM2E4YjQ2MmJkXkEyXkFqcGdeQXVyMjcyMzI2OTQ@._V1_.jpg",
+      "category": "Histories",
+      "rating": 9,
+      "year": 2028,
+      "durationTime": "02:12:45"
+    },
+    {
+      "name": "The Man Who Refused To Regenerate",
+      "img": "https://m.media-amazon.com/images/M/MV5BZDhiOGY4YzctYjdjOS00MjBlLTliZjItNWE2NDZhN2MzNzM3XkEyXkFqcGdeQXVyMTI3MTQzNzk1._V1_.jpg",
+      "category": "Histories",
+      "rating": 10,
+      "year": 2029,
+      "durationTime": "02:05:45"
+    },
+    {
+      "name": "The Iron Age",
+      "img": "https://m.media-amazon.com/images/M/MV5BZjQ5ZmFhYzgtYjMyNi00NWQ0LWIyMDgtZmU4ZWRhNmJlNDQwXkEyXkFqcGdeQXVyMTI3MTQzNzk1._V1_.jpg",
+      "category": "Fantastics",
+      "rating": 9,
+      "year": 2030,
+      "durationTime": "01:48:45"
+    },
+    {
+      "name": "Citizen Green",
+      "img": "https://m.media-amazon.com/images/M/MV5BYTZlOTU3YjYtZmQ3ZC00NmI4LTg4MWUtODJkMmY5Y2M5ZDAxXkEyXkFqcGdeQXVyMzA4OTQ2Nzg@._V1_.jpg",
+      "category": "Cartoons",
+      "rating": 8,
+      "year": 2031,
+      "durationTime": "01:33:45"
+    },
+    {
+      "name": "The Wasteland",
+      "img": "https://m.media-amazon.com/images/M/MV5BNzkzMzllMzUtOWM5Zi00YzRiLTgxYjctNTYxZTQ0NTU3M2M1XkEyXkFqcGdeQXVyMTI3MTQzNzk1._V1_.jpg",
+      "category": "Fantastics",
+      "rating": 7,
+      "year": 2032,
+      "durationTime": "01:02:25"
+    },
+    {
+      "name": "Avengers: The Kang Dynasty",
+      "img": "https://m.media-amazon.com/images/M/MV5BMTMyMTMwYTctMjExYi00NTc3LWEwYjAtZWJmODVkZDU1NTZiXkEyXkFqcGdeQXVyMTEzMTI1Mjk3._V1_.jpg",
+      "category": "Fantastics",
+      "rating": 6,
+      "year": 2033,
+      "durationTime": "01:16:40"
+    },
+    {
+      "name": "The War of Time",
+      "img": "https://m.media-amazon.com/images/M/MV5BOGIyYWRmNjktZWExMi00NWM2LWI5YWQtZmIxNGI5OGYyYmQzXkEyXkFqcGdeQXVyMTI3MTQzNzk1._V1_.jpg",
+      "category": "Histories",
+      "rating": 5,
+      "year": 2034,
+      "durationTime": "01:18:12"
+    },
+    {
+      "name": "Naya Legend of the Golden Dolphin",
+      "img": "https://m.media-amazon.com/images/M/MV5BOTVjODU5ODUtMzYyMy00NzgwLTgxNzMtNDFjNTM2NWNmODQxXkEyXkFqcGdeQXVyODMwMzY2NTM@._V1_.jpg",
+      "category": "Cartoons",
+      "rating": 4,
+      "year": 2035,
+      "durationTime": "02:10:05"
+    },
+    {
+      "name": "The End Of The Line",
+      "img": "https://m.media-amazon.com/images/M/MV5BNzA0NTdkYmMtZGQ0YS00MGUyLTg0YmItN2VmOTcyYzM3ZDM5XkEyXkFqcGdeQXVyMTI3MTQzNzk1._V1_.jpg",
+      "category": "Histories",
+      "rating": 3,
+      "year": 2036,
+      "durationTime": "01:55:25"
+    },
+    {
+      "name": "Wicked: Part Two",
+      "img": "https://m.media-amazon.com/images/M/MV5BNjczYjBhMTctYTA3Yy00NTgyLWFkZWQtZjQwYTRkMDc1YTc1XkEyXkFqcGdeQXVyNTk5NTQzNDI@._V1_.jpg",
+      "category": "Fantastics",
+      "rating": 2,
+      "year": 2037,
+      "durationTime": "01:03:15"
+    },
+    {
+      "name": "Family and other Adventures",
+      "img": "https://m.media-amazon.com/images/M/MV5BYTg2Y2JmZDMtMDE3Ni00MjU4LTg5YjAtYjM5YmExZjFlZjI3XkEyXkFqcGdeQXVyNjU0NjQ5Nzk@._V1_.jpg",
+      "category": "Cartoons",
+      "rating": 1,
+      "year": 2038,
+      "durationTime": "01:38:15"
+    },
+    {
+      "name": "Our Rex is bigger than Yours",
+      "img": "https://m.media-amazon.com/images/M/MV5BYjU3Y2Y2NmQtM2YxNy00ZjFhLTk0YzItNzkzYWI5MjJjMDJlXkEyXkFqcGdeQXVyNTM0MTQxMDU@._V1_.jpg",
+      "category": "Histories",
+      "rating": 2,
+      "year": 2039,
+      "durationTime": "02:12:45"
+    }
+  ]
+}
